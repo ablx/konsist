@@ -35,7 +35,7 @@ import org.jetbrains.kotlin.psi.KtValueArgumentList
 
 internal class KoEnumConstantDeclarationCore private constructor(
     override val ktEnumEntry: KtEnumEntry,
-    override val containingDeclaration: KoContainingDeclarationProvider,
+    override val containingDeclaration: KoBaseDeclaration,
 ) : KoEnumConstantDeclaration,
     KoBaseProviderCore,
     KoAnnotationProviderCore,
@@ -91,7 +91,7 @@ internal class KoEnumConstantDeclarationCore private constructor(
 
         internal fun getInstance(
             ktEnumEntry: KtEnumEntry,
-            containingDeclaration: KoContainingDeclarationProvider,
+            containingDeclaration: KoBaseDeclaration,
         ): KoEnumConstantDeclaration =
             cache.getOrCreateInstance(ktEnumEntry, containingDeclaration) {
                 KoEnumConstantDeclarationCore(ktEnumEntry, containingDeclaration)

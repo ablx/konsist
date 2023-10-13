@@ -1,5 +1,6 @@
 package com.lemonappdev.konsist.core.provider
 
+import com.lemonappdev.konsist.api.declaration.KoBaseDeclaration
 import com.lemonappdev.konsist.api.declaration.KoParentInterfaceDeclaration
 import com.lemonappdev.konsist.api.provider.KoParentInterfaceProvider
 import com.lemonappdev.konsist.core.declaration.KoParentInterfaceDeclarationCore
@@ -28,7 +29,7 @@ internal interface KoParentInterfaceProviderCore :
                 ?.filterIsInstance<KtDelegatedSuperTypeEntry>() ?: emptyList()
 
             val all = interfaces + delegations
-            return all.map { KoParentInterfaceDeclarationCore.getInstance(it, this) }
+            return all.map { KoParentInterfaceDeclarationCore.getInstance(it, this as KoBaseDeclaration) }
         }
 
     @Deprecated("Will be removed in v1.0.0", replaceWith = ReplaceWith("numParents"))

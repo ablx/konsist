@@ -1,5 +1,6 @@
 package com.lemonappdev.konsist.core.provider
 
+import com.lemonappdev.konsist.api.declaration.KoBaseDeclaration
 import com.lemonappdev.konsist.api.declaration.KoParentDeclaration
 import com.lemonappdev.konsist.api.provider.KoParentProvider
 import com.lemonappdev.konsist.core.declaration.KoParentDeclarationCore
@@ -18,7 +19,7 @@ internal interface KoParentProviderCore :
             .getSuperTypeList()
             ?.children
             ?.filterIsInstance<KtSuperTypeListEntry>()
-            ?.map { KoParentDeclarationCore.getInstance(it, this) }
+            ?.map { KoParentDeclarationCore.getInstance(it, this as KoBaseDeclaration) }
             ?: emptyList()
 
     override val numParents: Int

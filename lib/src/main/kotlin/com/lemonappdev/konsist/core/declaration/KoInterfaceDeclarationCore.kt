@@ -45,7 +45,7 @@ import org.jetbrains.kotlin.psi.KtTypeParameterListOwner
 
 internal class KoInterfaceDeclarationCore private constructor(
     private val ktClass: KtClass,
-    override val containingDeclaration: KoContainingDeclarationProvider,
+    override val containingDeclaration: KoBaseDeclaration,
 ) :
     KoInterfaceDeclaration,
     KoBaseProviderCore,
@@ -103,7 +103,7 @@ internal class KoInterfaceDeclarationCore private constructor(
 
         internal fun getInstance(
             ktClass: KtClass,
-            containingDeclaration: KoContainingDeclarationProvider,
+            containingDeclaration: KoBaseDeclaration,
         ): KoInterfaceDeclaration =
             cache.getOrCreateInstance(ktClass, containingDeclaration) {
                 KoInterfaceDeclarationCore(ktClass, containingDeclaration)
